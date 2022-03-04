@@ -1,0 +1,14 @@
+version: '3'
+services:
+
+  pgdb-course:
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_DB=course
+    - POSTGRES_PASSWORD=admin
+
+    image: postgres
+    ports:
+    - 5433:5433
+    restart: always
+
