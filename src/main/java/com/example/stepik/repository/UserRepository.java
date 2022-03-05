@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Repository
 @Transactional
@@ -17,4 +18,6 @@ public interface UserRepository extends PagingAndSortingRepository<User,Long> {
 
     @Query("FROM User u WHERE u.login = :login")
     Collection<User> isUser(@Param("login") String login);
+
+    Optional<User> findByLogin(String login);
 }

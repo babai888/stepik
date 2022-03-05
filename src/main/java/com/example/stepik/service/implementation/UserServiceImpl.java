@@ -13,6 +13,7 @@ public class UserServiceImpl implements UserService {
     private UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Override
     public String saveUser(User user) {
         System.out.println(userRepository.isUser(user.getLogin()));
