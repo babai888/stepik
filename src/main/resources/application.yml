@@ -14,5 +14,10 @@ spring:
     - 'classpath:db/migration'
   jpa:
     show-sql: true
+#
+#  security:
+#    user:
+#      name: admin
+#      password: admin
 
 

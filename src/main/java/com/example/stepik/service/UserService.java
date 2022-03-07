@@ -7,4 +7,5 @@ import org.springframework.stereotype.Component;
 public interface UserService {
     public String saveUser(User user);
     public Iterable<User> getUserAll();
+    public User getCurrentUser();
 }

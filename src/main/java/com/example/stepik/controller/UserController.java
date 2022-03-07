@@ -17,11 +17,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PutMapping("/user")
+    @PutMapping("/users")
     public String save(@RequestBody User user) {
         return userService.saveUser(user);
     }
-    @GetMapping("/user")
+    @GetMapping("/users")
     public Iterable<User> getAll () {
         return userService.getUserAll();
     }
