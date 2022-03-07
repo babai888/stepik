@@ -25,4 +25,8 @@ public class UserController {
     public Iterable<User> getAll () {
         return userService.getUserAll();
     }
+    @GetMapping("/users/current")
+    public User getCurrentUser() {
+        return userService.getCurrentUser();
+    }
 }
