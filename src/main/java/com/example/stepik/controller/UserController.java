@@ -18,7 +18,7 @@ public class UserController {
     }
 
     @PutMapping("/users")
-    public String save(@RequestBody User user) {
+    public User save(@RequestBody User user) {
         return userService.saveUser(user);
     }
     @GetMapping("/users")

@@ -11,24 +11,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+
     @Autowired
-    private UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
 
     @Override
-    public String saveUser(User user) {
-        System.out.println(userRepository.isUser(user.getLogin()));
-        if(userRepository.isUser(user.getLogin()).isEmpty()) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userRepository.save(user);
-            return "OK";
-        }
-        return "user " + user.getLogin() + " exists";
+    public User saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+            return userRepository.save(user);
     }
 
     @Override
@@ -43,5 +36,10 @@ public class UserServiceImpl implements UserService {
                 (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
         return userRepository.findByLogin(principal.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("user not found"));
+    }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return userRepository.findByLogin(login).orElse(null);
     }
 }
